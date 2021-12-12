@@ -1,0 +1,28 @@
+package com.codeboxx.reservationFilm;
+
+import java.io.IOException;
+
+import org.json.JSONObject;
+
+import com.codeboxx.reservationFilm.CallApi.CallApi;
+
+public class Main {
+
+	public static void main(String[] args) {
+		new CatalogueSWING();
+
+		
+		CallApi obj = new CallApi();
+        try {
+			//obj.sendGETSync();
+        	Object salut = ((JSONObject) obj.getImage()).getJSONObject("image").get("original");
+			System.out.println(salut);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+    
+	}
+
+}

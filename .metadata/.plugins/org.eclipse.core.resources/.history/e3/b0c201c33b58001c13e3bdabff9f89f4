@@ -1,0 +1,37 @@
+package com.codeboxx.reservationFilm;
+
+import java.io.IOException;
+
+import org.json.JSONObject;
+
+import com.codeboxx.reservationFilm.CallApi.CallApi;
+
+public class Main {
+
+	public static void main(String[] args) {
+		new CatalogueSWING();
+
+		
+		CallApi obj = new CallApi();
+        try {
+			//obj.sendGETSync();
+        	Object apiImage = ((JSONObject) obj.getImage()).getJSONObject("image").get("original");
+        	Object apiName = ((JSONObject) obj.getImage()).get("name");
+        	Object apiGenre = ((JSONObject) obj.getImage()).get("genres");
+        	Object apiRuntime = ((JSONObject) obj.getImage()).get("runtime");
+        	Object apiRating = ((JSONObject) obj.getImage()).get("rating");
+        	
+			System.out.println(apiImage);
+			System.out.println(apiName);
+			System.out.println(apiGenre);
+			System.out.println(apiRuntime);
+			System.out.println(apiRating);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+    
+	}
+
+}

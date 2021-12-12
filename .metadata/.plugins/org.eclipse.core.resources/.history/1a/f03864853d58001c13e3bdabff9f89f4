@@ -1,0 +1,42 @@
+package com.codeboxx.reservationFilm;
+
+import java.io.IOException;
+
+import org.json.JSONObject;
+
+import com.codeboxx.reservationFilm.CallApi.CallApi;
+
+public class Main {
+
+	public static void main(String[] args) {
+		new CatalogueSWING();
+
+		
+		CallApi obj = new CallApi();
+        try {
+			//obj.sendGETSync();
+        	//Object apiImage = ((JSONObject) obj.getImage("walking")).getJSONObject("image").get("original");
+        	Object apiName = ((JSONObject) obj.getImage("walking")).get("name");
+        	// peu avoire plus d'un genre
+        	Object apiGenre = ((JSONObject) obj.getImage("walking%20dead")).getJSONArray("genres").get(1);
+        	Object apiRuntime = ((JSONObject) obj.getImage("walking%20dead")).get("runtime");
+        	Object apiRating = ((JSONObject) obj.getImage("walking%20dead")).getJSONObject("rating").get("average");
+        	Object apiSummary = ((JSONObject) obj.getImage("walking%20dead")).get("summary");
+        	
+        	
+        	
+			//System.out.println(apiImage);
+			System.out.println(apiName);
+			System.out.println(apiGenre);
+			System.out.println(apiRuntime);
+			System.out.println(apiRating);
+			System.out.println(apiSummary);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+    
+	}
+
+}
